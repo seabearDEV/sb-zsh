@@ -15,7 +15,7 @@ This README provides instructions on how to install the ```sb-zsh``` scripts usi
 
 3. Run the installation script by executing the following command:
 
-   ```
+   ```zsh
    ./install.zsh
    ```
 
