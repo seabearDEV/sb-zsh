@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# Description: This script sources all the .zsh files in the specified directory.
+# Usage: Add this to your .zshrc file: source "$HOME/.sb-zsh/sb-zsh.zsh"
+# Parameters: None
+
 # Define the directory where the scripts are located
 scripts_dir="$HOME/.sb-zsh/scripts"
 

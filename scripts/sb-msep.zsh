@@ -1,6 +1,11 @@
 #!/bin/zsh
 
-# Monitor Some Egregious Process
+# Description: This script monitors the CPU and memory usage of a specified service at regular intervals.
+# Usage: ./script.sh -n <SERVICE_NAME> -t <TIME_INTERVAL>
+# Parameters:
+# -n <SERVICE_NAME>: Name of the service to monitor.
+# -t <TIME_INTERVAL>: Time interval in seconds between each check.
+
 msep() {
     # Initialize default values
     SERVICE_NAME=""
@@ -17,9 +22,9 @@ msep() {
     # Parse options
     while getopts "n:t:" opt; do
         case $opt in
-            n) SERVICE_NAME=$OPTARG ;;
-            t) INTERVAL=$OPTARG ;;
-            *) usage ;;
+            n) SERVICE_NAME=$OPTARG ;;  # Set the service name
+            t) INTERVAL=$OPTARG ;;      # Set the time interval
+            *) usage ;;                 # Show usage for invalid options
         esac
     done
 
@@ -45,7 +50,7 @@ msep() {
 
     # Loop indefinitely, press Ctrl+C to exit
     while true; do
-        # Use ps to get cpu and memory usage of the service
+        # Use ps to get CPU and memory usage of the service
         ps -eo pcpu,pmem,args | grep "[${SERVICE_NAME:0:1}]${SERVICE_NAME:1}" | awk '{cpu+=$1; mem+=$2} END {print "CPU Usage: " cpu "%, Memory Usage: " mem "%"}'
 
         # Wait for the specified interval before repeating

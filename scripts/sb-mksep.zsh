@@ -1,6 +1,12 @@
 #!/bin/zsh
 
-# Monitor and kill Some Egregious Process
+# Description: This script monitors and kills a specified process at regular intervals.
+# Usage: ./script.sh [-n SERVICE_NAME] [-s SLEEP_TIME] [-t]
+# Parameters:
+# -n SERVICE_NAME: Set the service name to monitor and kill. Default is 'Some Egregious Process'.
+# -s SLEEP_TIME: Set sleep time between checks. Default is 60 seconds.
+# -t: Enable test mode. Does not actually kill the process, just simulates.
+
 mksep() {
     # Initialize default values
     TEST_MODE=0
@@ -25,9 +31,9 @@ mksep() {
     # Parse command line options
     while getopts ":n:s:t" opt; do
         case $opt in
-            n) SERVICE_NAME=$OPTARG ;;
-            s) SLEEP_TIME=$OPTARG ;;
-            t) TEST_MODE=1 ;;
+            n) SERVICE_NAME=$OPTARG ;;  # Set the service name
+            s) SLEEP_TIME=$OPTARG ;;    # Set the sleep time
+            t) TEST_MODE=1 ;;           # Enable test mode
             \?)
                 echo "Invalid option: -$OPTARG" >&2
                 usage
@@ -47,9 +53,9 @@ mksep() {
     # Function to check if the service exists
     service_exists() {
         if pgrep -f "$SERVICE_NAME" >/dev/null 2>&1; then
-            return 0
+            return 0  # Service exists
         else
-            return 1
+            return 1  # Service does not exist
         fi
     }
 

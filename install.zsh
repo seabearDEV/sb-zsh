@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# Description: This script installs sb-zsh scripts to the user's home directory.
+# Usage: Run the script and follow the prompts to install sb-zsh scripts.
+# Parameters: None
+
 # Function to install sb-zsh scripts
 install_sb_zsh() {
   local INSTALL_DIR="$HOME/.sb-zsh"
@@ -23,7 +27,8 @@ install_sb_zsh() {
   echo "Scripts installed successfully, sourcing the .zshrc file..."
   source "$HOME/.zshrc"
 
-  echo "Sourcing complete."
+  echo "Sourcing complete, please be sure to add the following line to your .zshrc file:"
+  echo 'source "$HOME/.sb-zsh/sb-zsh.zsh"'
 }
 
 # Prompt the user for confirmation
