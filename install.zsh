@@ -2,22 +2,22 @@
 
 # Function to install sb-zsh scripts
 install_sb_zsh() {
-  local install_dir="$HOME/.sb-zsh"
+  local INSTALL_DIR="$HOME/.sb-zsh"
 
   # Check if the directory exists, remove it if it does
-  if [[ -d "$install_dir" ]]; then
+  if [[ -d "$INSTALL_DIR" ]]; then
     echo "The directory already exists, deleting it..."
-    rm -rf "$install_dir"
+    rm -rf "$INSTALL_DIR"
   fi
 
   # Create the directory
-  echo "Creating directory '$install_dir'..."
-  mkdir "$install_dir"
+  echo "Creating directory '$INSTALL_DIR'..."
+  mkdir "$INSTALL_DIR"
 
   # Copy the scripts to the directory
-  echo "Installing scripts to $install_dir..."
-  cp ./sb-zsh.zsh "$install_dir"
-  cp -r ./scripts* "$install_dir"
+  echo "Installing scripts to $INSTALL_DIR..."
+  cp ./sb-zsh.zsh "$INSTALL_DIR"
+  cp -r ./scripts* "$INSTALL_DIR"
 
   # Source the .zshrc file
   echo "Scripts installed successfully, sourcing the .zshrc file..."
